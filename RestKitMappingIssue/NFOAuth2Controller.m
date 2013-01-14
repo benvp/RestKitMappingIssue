@@ -37,11 +37,11 @@
     if (self) {
         self.appDelegate = (NFAppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        [[NXOAuth2AccountStore sharedStore] setClientID:@"d1bbbb87b81ca408afa95671bab04fa6e4e166fa6f766bc63a7d3eda5c1e5b2a"
-                                                 secret:@"9e4af7e6ca4cf57182aba55bbcf593582585e23b15a04bc6964f1bd25af8c1c5"
-                                       authorizationURL:[NSURL URLWithString:@"http://localhost:3000/oauth/authorize"]
-                                               tokenURL:[NSURL URLWithString:@"http://localhost:3000/oauth/token"]
-                                            redirectURL:[NSURL URLWithString:@"http://api.gusho.de/ios/callback"]
+        [[NXOAuth2AccountStore sharedStore] setClientID:@"bd8848d0b01bd52340ac6e1981479ee8f9960edf60f75c86f0531bae7c70cbb7"
+                                                 secret:@"1adbd0b455b18d07d4448b7b83ca9b9c2a9d2f4b99887f4dfdb2b7bc8e6c06d3"
+                                       authorizationURL:[NSURL URLWithString:@"http://gushoapi.herokuapp.com/oauth/authorize"]
+                                               tokenURL:[NSURL URLWithString:@"http://gushoapi.herokuapp.com/oauth/token"]
+                                            redirectURL:[NSURL URLWithString:@"http://gushoapi.herokuapp.com/callback"]
                                          forAccountType:@"RestKitMappingIssue"];
         
         //Check if we already have a user and assign the tokens to restkit

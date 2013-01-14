@@ -31,7 +31,7 @@
     [super viewDidLoad];
     
     //Login to the API and Request the RemoteObjects
-    [[NFOAuth2Controller sharedInstance] loginWithUsername:@"ben.linder@me.com" password:@"password" success:^(NXOAuth2Account *user) {
+    [[NFOAuth2Controller sharedInstance] loginWithUsername:@"foo@bar.com" password:@"password" success:^(NXOAuth2Account *user) {
         NSLog(@"logged in successfully");
         [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithToken:user.accessToken.accessToken];
         //Fetch the data
