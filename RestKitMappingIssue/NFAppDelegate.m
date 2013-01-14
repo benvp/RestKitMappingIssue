@@ -15,7 +15,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //Initialize the RestKit
-    [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/v1"]];
+    [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://gushoapi.herokuapp.com/v1"]];
     
     //Set activity indicator when network is busy
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
