@@ -86,10 +86,10 @@
 		DDF4B90716A3F9D400D27C62 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		DDF4B90F16A3FA9900D27C62 /* NFCoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCoreDataHelper.h; sourceTree = "<group>"; };
 		DDF4B91016A3FA9900D27C62 /* NFCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCoreDataHelper.m; sourceTree = "<group>"; };
-		DDF4B91916A3FCAA00D27C62 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
-		DDF4B91A16A3FCAA00D27C62 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
-		DDF4B91D16A3FCAA00D27C62 /* Partner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Partner.h; sourceTree = "<group>"; };
-		DDF4B91E16A3FCAA00D27C62 /* Partner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Partner.m; sourceTree = "<group>"; };
+		DDF4B91916A3FCAA00D27C62 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Address.h; path = ../Address.h; sourceTree = "<group>"; };
+		DDF4B91A16A3FCAA00D27C62 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Address.m; path = ../Address.m; sourceTree = "<group>"; };
+		DDF4B91D16A3FCAA00D27C62 /* Partner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Partner.h; path = ../Partner.h; sourceTree = "<group>"; };
+		DDF4B91E16A3FCAA00D27C62 /* Partner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Partner.m; path = ../Partner.m; sourceTree = "<group>"; };
 		DDF4B92016A3FDD700D27C62 /* DataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,7 +121,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DDF4B87E16A3F0D500D27C62 = {
+		DD016EAE16A403F800341976 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DDF4B90016A3F72600D27C62 /* NFOAuth2Controller.h */,
+				DDF4B90116A3F72600D27C62 /* NFOAuth2Controller.m */,
+				DDF4B90F16A3FA9900D27C62 /* NFCoreDataHelper.h */,
+				DDF4B91016A3FA9900D27C62 /* NFCoreDataHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		DD016EAF16A4040500341976 /* ObjectMappings */ = {
+			isa = PBXGroup;
+			children = (
+				DDF4B8DD16A3F1A500D27C62 /* RKObjectManager+NFObjectMappings.h */,
+				DDF4B8DE16A3F1A500D27C62 /* RKObjectManager+NFObjectMappings.m */,
+			);
+			name = ObjectMappings;
+			sourceTree = "<group>";
+		};
+		DD016EB016A4041100341976 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				DDF4B91916A3FCAA00D27C62 /* Address.h */,
@@ -129,6 +149,13 @@
 				DDF4B91E16A3FCAA00D27C62 /* Partner.m */,
 				DDF4B91A16A3FCAA00D27C62 /* Address.m */,
 				DDF4B90616A3F9D400D27C62 /* DataModel.xcdatamodeld */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		DDF4B87E16A3F0D500D27C62 = {
+			isa = PBXGroup;
+			children = (
 				DDF4B89316A3F0D500D27C62 /* RestKitMappingIssue */,
 				DDF4B8BA16A3F0D600D27C62 /* RestKitMappingIssueTests */,
 				DDF4B88C16A3F0D500D27C62 /* Frameworks */,
@@ -164,6 +191,9 @@
 		DDF4B89316A3F0D500D27C62 /* RestKitMappingIssue */ = {
 			isa = PBXGroup;
 			children = (
+				DD016EB016A4041100341976 /* Models */,
+				DD016EAF16A4040500341976 /* ObjectMappings */,
+				DD016EAE16A403F800341976 /* Helpers */,
 				DDF4B89C16A3F0D500D27C62 /* NFAppDelegate.h */,
 				DDF4B89D16A3F0D500D27C62 /* NFAppDelegate.m */,
 				DDF4B90316A3F97B00D27C62 /* NFPartnerViewController.h */,
@@ -173,12 +203,6 @@
 				DDF4B8A516A3F0D600D27C62 /* MainStoryboard_iPhone.storyboard */,
 				DDF4B8A816A3F0D600D27C62 /* MainStoryboard_iPad.storyboard */,
 				DDF4B89416A3F0D500D27C62 /* Supporting Files */,
-				DDF4B8DD16A3F1A500D27C62 /* RKObjectManager+NFObjectMappings.h */,
-				DDF4B8DE16A3F1A500D27C62 /* RKObjectManager+NFObjectMappings.m */,
-				DDF4B90016A3F72600D27C62 /* NFOAuth2Controller.h */,
-				DDF4B90116A3F72600D27C62 /* NFOAuth2Controller.m */,
-				DDF4B90F16A3FA9900D27C62 /* NFCoreDataHelper.h */,
-				DDF4B91016A3FA9900D27C62 /* NFCoreDataHelper.m */,
 			);
 			path = RestKitMappingIssue;
 			sourceTree = "<group>";
@@ -561,7 +585,8 @@
 				DDF4B90716A3F9D400D27C62 /* DataModel.xcdatamodel */,
 			);
 			currentVersion = DDF4B90716A3F9D400D27C62 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
+			name = DataModel.xcdatamodeld;
+			path = ../DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
