@@ -7,14 +7,48 @@
 //
 
 #import "NFAppDelegate.h"
+#import "NFOAuth2Controller.h"
+#import "RKObjectManager+NFObjectMappings.h"
 
 @implementation NFAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    //Initialize the RestKit
+    [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/v1"]];
+    
+    //Set activity indicator when network is busy
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
+    //If the user is already authenticated then add the access token to the authorization header
+    if ([[NFOAuth2Controller sharedInstance] isAuthenticated]) {
+        NXOAuth2Account *account = [[NFOAuth2Controller sharedInstance] account];
+        [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithToken:account.accessToken.accessToken];
+    }
+    
+    //Create the managedObjectModel and create the persistent store and managedobjectcontexts
+    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"DataModel" ofType:@"momd"]];
+    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
+    RKManagedObjectStore *objectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    [objectStore createPersistentStoreCoordinator];
+    [objectStore createManagedObjectContexts];
+    
+    NSString *storePath = [[[self applicationDocumentsDirectory] path] stringByAppendingPathComponent:@"sample.sqlite"];
+    NSError *error = nil;
+    [objectStore addSQLitePersistentStoreAtPath:storePath fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
+    if (error) {
+        NSLog(@"Error creating persistent Store: %@", error);
+    }
+    
+    [RKObjectManager sharedManager].managedObjectStore = objectStore;
+    
+    
+    //Now define the object Mappings
+    [[RKObjectManager sharedManager] defineMappings];
+    
     return YES;
 }
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -41,6 +75,14 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Application's Documents directory
+
+// Returns the URL to the application's Documents directory.
+- (NSURL *)applicationDocumentsDirectory
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 @end
